@@ -1,5 +1,9 @@
 package baseball.ui.handler;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class UserInputHandler {
 
     public static int[] stringParseInt(String input) {
@@ -21,5 +25,10 @@ public class UserInputHandler {
         if(input.length() != 3) {
             throw new IllegalArgumentException("올바르지 않은 입력");
         }
+    }
+
+    public static String userInput() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        return br.readLine();
     }
 }
