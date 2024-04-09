@@ -6,6 +6,7 @@ import java.io.IOException;
 
 public class Application {
     public static void main(String[] args) throws IOException {
-        BaseballService.gameProcess();
+        BaseballService baseballService = new BaseballService();
+        baseballService.gameProcess();
     }
 }

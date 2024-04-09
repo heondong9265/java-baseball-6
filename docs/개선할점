@@ -1,0 +1,55 @@
+======초기 로직=======
+서비스 코드에 비즈니스 로직이 포함되어 있음.
+메시지 중심 설계는 도메인을 먼저 생성하고, 그 안에 비즈니스 로직을 넣어야함
+computeScore 경우 정답을 계산하기 때문에 Referee(심판)으로 클래스명을 지정하고,
+Referee 클래스 안에 비즈니스 로직을 구현하도록 한다.
+**결론은 비즈니스 로직은 서비스 코드가 아니라 도메인이 핵심
+
+public class BaseballService {
+    // TODO : 상태는 추후 도메인에 따로 빼기
+    private static int[] computerBall;
+    private static int[] userBall;
+    private static int ballCount = 0;
+    private static int strikeCount = 0;
+    private static final int BASEBALL_LENGTH = GameConfig.BASEBALL_LENGTH;
+
+    public static void gameProcess() throws IOException {
+        computerBall = computerBall();
+        userBall = userBall();
+        computeScore(computerBall, userBall);
+    }
+
+    private static int[] userBall() throws IOException {
+        String pitcherBall = userInput();
+        return UserInputHandler.stringParseInt(pitcherBall);
+    }
+
+    private static int[] computerBall() {
+        return new RandomNumberGenerator().computerBall();
+    }
+
+    private static void computeScore(int[] computerBall, int[] userBall) {
+        for (int i = 0; i < BASEBALL_LENGTH; i++) {
+            compute(computerBall, userBall, i);
+        }
+    }
+
+    private static void compute(int[] computerBall, int[] userBall, int index) {
+        int temp = -1;
+        for (int i = 0; i < BASEBALL_LENGTH; i++) {
+            if(computerBall[i] == userBall[index]) {
+                temp = i;
+                break;
+            }
+        }
+        correctCount(index, temp);
+    }
+
+    private static void correctCount(int index, int temp) {
+        if (temp != index && temp != -1) { ballCount++; }
+        if (temp == index) { strikeCount++; }
+    }
+
+    ================수정된 버전===================
+
+
