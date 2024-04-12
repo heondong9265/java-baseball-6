@@ -21,7 +21,6 @@ public class BaseballService {
         do {
             baseball.setUserBall(UserInputHandler.getUserInputAsIntArray());
             referee.computeScore(baseball);
-            referee.resultDisplay();
             continuePlaying = referee.gameOver(baseball);
         } while (continuePlaying);
     }

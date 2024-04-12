@@ -18,6 +18,7 @@ public class Referee {
         for (int i = 0; i < BASEBALL_LENGTH; i++) {
             compute(computerBall, userBall, i);
         }
+        resultDisplay();
     }
 
     private void compute(int[] computerBall, int[] userBall, int index) {
