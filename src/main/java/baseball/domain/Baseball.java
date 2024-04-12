@@ -21,4 +21,8 @@ public class Baseball {
     public int[] getUserBall() {
         return userBall;
     }
+
+    public void reset() {
+        this.computerBall = new RandomNumberGenerator().generateBall();
+    }
 }
