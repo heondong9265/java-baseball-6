@@ -14,7 +14,7 @@ public class RandomNumberGeneratorTest {
     public void testComputerBall() {
         final int BASEBALL_LENGTH = GameConfig.BASEBALL_LENGTH;
         RandomNumberGenerator game = new RandomNumberGenerator();
-        int[] numbers = game.computerBall();
+        int[] numbers = game.generateBall();
 
         assertEquals(BASEBALL_LENGTH, numbers.length, "숫자의 개수는 GameConfig의 개수를 따라야 한다.");
 
